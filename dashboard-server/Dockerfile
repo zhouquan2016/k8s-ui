@@ -6,7 +6,7 @@ WORKDIR /build
 ADD . .
 RUN go build -o app main.go
 #运行阶段
-FROM alpine3.16
+FROM alpine:3.16
 WORKDIR /product
 RUN mkdir -p /product/config
 COPY --from=build /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
