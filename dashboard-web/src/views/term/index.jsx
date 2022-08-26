@@ -26,7 +26,7 @@ export default function Term() {
             // 光标闪烁
             cursorBlink: true,
         });
-        const websocket = new WebSocket(`ws://localhost:8080/ws?namespace=${searchParams.get('namespace')}&pod=${searchParams.get('pod')}`);
+        const websocket = new WebSocket(`ws://${process.env.REACT_APP_SERVER_HOST}/ws?namespace=${searchParams.get('namespace')}&pod=${searchParams.get('pod')}`);
         function sendData(data) {
             websocket.send(JSON.stringify(data));
         }

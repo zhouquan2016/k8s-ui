@@ -1,0 +1,2 @@
+docker build ./dashboard-server/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-server:1.0.0 && \
+docker build ./dashboard-web/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-web:1.0.0 && \

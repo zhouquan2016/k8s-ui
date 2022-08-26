@@ -23,7 +23,7 @@ export default function Log() {
             // 光标闪烁
             cursorBlink: true,
         });
-        const websocket = new WebSocket(`ws://localhost:8080/log/${searchParams.get('namespace')}/${searchParams.get('pod')}`);
+        const websocket = new WebSocket(`ws://${process.env.REACT_APP_SERVER_HOST}/log/${searchParams.get('namespace')}/${searchParams.get('pod')}`);
 
         websocket.onopen = () => {
             const fitAddon = new FitAddon();

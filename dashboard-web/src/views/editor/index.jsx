@@ -16,7 +16,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import { useEffect, useRef, useState} from "react";
 import { useSearchParams, useLocation, useNavigate } from "react-router-dom"
 
-const baseUrl = "http://localhost:8080";
+const baseUrl = `http://${process.env.REACT_APP_SERVER_HOST}`;
 
 function EditorKey({ configmap, handlerUpdate, handlerRemoveKey, toggleEditable }) {
     const { key, data, editable, isFold } = configmap;
