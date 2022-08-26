@@ -10,9 +10,6 @@ FROM alpine:3.16
 WORKDIR /product
 RUN mkdir -p /product/config
 COPY --from=build /build/app /product/app
-COPY --from=build /build/config/*.yaml          /product/config
-COPY --from=build /build/config/*.xml           /product/config
-COPY --from=build /build/config/*.properties    /product/config
-COPY --from=build /build/config/*.sql           /product/config
+COPY --from=build /build/config/*          /product/config
 
 CMD [ "/product/app" ]
