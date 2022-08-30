@@ -31,6 +31,6 @@ if [ "$1" == "rebuild" ]; then
       exit
   fi
 fi
-kubectl apply -f ./k8s.yaml && \
-portForward k8s-dashboard-server 8080:8080 && \
-portForward k8s-dashboard-web 8081:80
+kubectl apply -f ./k8s.yaml
+#portForward k8s-dashboard-server 8080:8080 && \
+#portForward k8s-dashboard-web 8081:80
