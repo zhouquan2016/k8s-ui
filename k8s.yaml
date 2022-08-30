@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: k8s-dashdoard-server-config
+  name: k8s-dashboard-server-config
 data:
   config.yaml: |
     server:
@@ -14,19 +14,19 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-dashdoard-server
+  name: k8s-dashboard-server
   labels:
-    app: k8s-dashdoard-server
+    app: k8s-dashboard-server
 spec:
   replicas: 1
   template:
     metadata:
-      name: k8s-dashdoard-server
+      name: k8s-dashboard-server
       labels:
-        app: k8s-dashdoard-server
+        app: k8s-dashboard-server
     spec:
       containers:
-        - name: k8s-dashdoard-server
+        - name: k8s-dashboard-server
           image: registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-server:1.0.0
           imagePullPolicy: Always
           volumeMounts:
@@ -36,33 +36,33 @@ spec:
       volumes:
         - name: server-config
           configMap:
-            name: k8s-dashdoard-server-config
+            name: k8s-dashboard-server-config
   selector:
     matchLabels:
-      app: k8s-dashdoard-server
+      app: k8s-dashboard-server
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-dashdoard-web
+  name: k8s-dashboard-web
   labels:
-    app: k8s-dashdoard-web
+    app: k8s-dashboard-web
 spec:
   replicas: 1
   template:
     metadata:
-      name: k8s-dashdoard-web
+      name: k8s-dashboard-web
       labels:
-        app: k8s-dashdoard-web
+        app: k8s-dashboard-web
     spec:
       containers:
-        - name: k8s-dashdoard-web
+        - name: k8s-dashboard-web
           image: registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-web:1.0.0
           imagePullPolicy: Always
       restartPolicy: Always
   selector:
     matchLabels:
-      app: k8s-dashdoard-web
+      app: k8s-dashboard-web
 
 
