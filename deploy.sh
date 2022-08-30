@@ -5,11 +5,11 @@ function portForward {
     state=$(kubectl get pod | grep $podName | awk '{print $3}')
     if [ "$state" == "Running" ]; then
       if [ -f "$podName.pid" ]; then
-          pid=${cat $podName.pid}
+          pid=$(cat $podName.pid)
           kill -9 $pid
           rm -f $podName.pid
       fi
-      nohup kubectl port-forward --address localhost,192.168.48.136 deploy/$podName $port &  echo $! > $podName.pid
+      kubectl port-forward --address localhost,192.168.48.136 deploy/$podName $port &  echo $! > $podName.pid
       break
     elif [ "$state" == "Pending"  ]; then
       echo "wait pod running!"
