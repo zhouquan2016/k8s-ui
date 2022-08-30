@@ -30,6 +30,9 @@ metadata:
   name: k8s-dashboard-server
   labels:
     app: k8s-dashboard-server
+  annotations:
+    lastUpdate: {{now}}
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   template:
@@ -72,6 +75,9 @@ metadata:
   name: k8s-dashboard-web
   labels:
     app: k8s-dashboard-web
+  annotations:
+    lastUpdate: {{now}}
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   template:
