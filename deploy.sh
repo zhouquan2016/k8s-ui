@@ -1,4 +1,4 @@
-if [ $2 == "rebuild" ]; then
+if [ "$2" == "rebuild" ]; then
   ./build.sh
   if [ $! -ne 0  ]; then
       exit
