@@ -26,7 +26,8 @@ function portForward {
 
 if [ "$1" == "rebuild" ]; then
   ./build.sh
-  if [ "$!" != "0"  ]; then
+  state=$!
+  if [ "$state" != "0"  ]; then
       exit
   fi
 fi
