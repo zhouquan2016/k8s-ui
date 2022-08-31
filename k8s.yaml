@@ -79,7 +79,6 @@ metadata:
   labels:
     app: k8s-dashboard-web
   annotations:
-    lastUpdate: {{now}}
     reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
