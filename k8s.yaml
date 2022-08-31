@@ -48,6 +48,10 @@ spec:
           volumeMounts:
             - mountPath: /product/config
               name: server-config
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: /
       restartPolicy: Always
       volumes:
         - name: server-config
@@ -90,6 +94,10 @@ spec:
         - name: k8s-dashboard-web
           image: registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-web:1.0.0
           imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
       restartPolicy: Always
   selector:
     matchLabels:
