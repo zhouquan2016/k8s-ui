@@ -40,6 +40,8 @@ spec:
       labels:
         app: k8s-dashboard-server
     spec:
+      nodeSelector:
+        "kubernetes.io/hostname": node1
       containers:
         - name: k8s-dashboard-server
           image: registry.cn-hangzhou.aliyuncs.com/zhqn/k8s-dashboard-server:1.0.0
@@ -47,6 +49,8 @@ spec:
           volumeMounts:
             - mountPath: /product/config
               name: server-config
+            - mountPath: /product/git
+              name: git-dir
           readinessProbe:
             httpGet:
               port: 8080
@@ -56,6 +60,10 @@ spec:
         - name: server-config
           configMap:
             name: k8s-dashboard-server-config
+        - name: git-dir
+          hostPath:
+            path: /opt/k8s/git/
+            type: DirectoryOrCreate
   selector:
     matchLabels:
       app: k8s-dashboard-server
